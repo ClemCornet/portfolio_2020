@@ -51,7 +51,10 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: [
+    '~/plugins/vue-mq.js',
+    '~/plugins/vue-mixin.js'
+  ],
   /*
    ** Nuxt.js dev-modules
    */
@@ -89,16 +92,16 @@ export default {
           enforce: 'pre',
           test: /\.(js|vue)$/,
           loader: 'eslint-loader',
-          exclude: /(node_modules)/,
+          exclude: /(node_modules)/
         })
       }
     },
     loaders: {
       cssModules: {
         modules: {
-          localIdentName: '[name]__[local]--[hash:base64:5]',
-        },
-      },
-    },
-  },
+          localIdentName: '[name]__[local]--[hash:base64:5]'
+        }
+      }
+    }
+  }
 }

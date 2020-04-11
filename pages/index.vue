@@ -1,5 +1,9 @@
 <template>
-  <GridWrapper templateColumns="repeat(3, 1fr)">
+  <GridWrapper
+    :class="$style.container"
+    :template-columns="$isMobile ? '1fr' : 'repeat(3, 1fr)'"
+    align-items="center"
+  >
     <CardHome :class="$style.card" />
   </GridWrapper>
 </template>
@@ -19,13 +23,12 @@ export default {
 
 <style lang="scss" module>
 .container {
-  display: grid;
   height: 80vh;
-  grid-template-columns: 20% 60% 20%;
-  align-items: center;
 }
 
-.card {
+@include bp('sm') {
+  .card {
   grid-column-start: 2;
+}
 }
 </style>
