@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { props, style } from './script.js'
+import { props, style } from '../scripts/shortcutsGrid'
 export default {
   name: 'GridComp',
   inheritAttrs: false,

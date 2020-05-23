@@ -2,12 +2,24 @@
 @import 'colors.scss';
 @import 'fonts.scss';
 @import 'breakpoints.scss';
-@import 'background.scss';
 @import 'container.scss';
 @import 'shadow.scss';
 @import 'spacing.scss';
 
 body {
-  font-family: 'Montserrat', sans-serif;
-  @extend %background;
+  font-family: acumin-pro, sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  background: $blueDark;
+  overflow: hidden;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
 }

@@ -23,10 +23,6 @@ export default {
       {
         rel: 'stylesheet',
         href: 'https://use.typekit.net/efl2msd.css'
-      },
-      {
-        rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap'
       }
     ]
   },
@@ -51,7 +47,11 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['~/plugins/vue-mq.js', '~/plugins/vue-mixin.js'],
+  plugins: [
+    '~/plugins/vue-mq.js',
+    '~/plugins/vue-mixin.js',
+    '~/plugins/vue-filters.js'
+  ],
   /*
    ** Nuxt.js dev-modules
    */

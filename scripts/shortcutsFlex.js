@@ -1,4 +1,3 @@
-/* eslint-disable */
 const SHORTCUTS = [
   { id: 'direction', attr: 'flexDirection' },
   { id: 'align', attr: 'alignItems' },
@@ -25,7 +24,10 @@ SHORTCUTS.forEach((shortcut) => {
   props[shortcut.id] = String
 })
 
-export const style = $props => SHORTCUTS.reduce((accu, { id, attr }) => {
-  if ($props[id]) accu[attr] = $props[id]
-    return accu     
-}, $props.style || {})
+export const style = $props =>
+  SHORTCUTS.reduce((accu, { id, attr }) => {
+    if ($props[id]) {
+      accu[attr] = $props[id]
+    }
+    return accu
+  }, $props.style || {})

@@ -20,7 +20,7 @@ export default {
     name: {
       type: String,
       default: 'icon',
-      required: true
+      required: false
     },
     width: {
       type: Number,
@@ -39,5 +39,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" module></style>

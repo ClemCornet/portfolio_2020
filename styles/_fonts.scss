@@ -8,7 +8,7 @@ $fontMediumWeight: 500;
 $fontSemiBoldWeight: 600;
 $fontBoldWeight: 700;
 
-@mixin mixin-font($size, $color, $weight) {
+@mixin font($size, $color, $weight) {
   font-size: $size;
   color: $color;
   font-weight: $weight;

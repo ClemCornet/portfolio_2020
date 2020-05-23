@@ -1,34 +1,69 @@
 <template>
-  <GridWrapper
-    :class="$style.container"
-    :template-columns="$isMobile ? '1fr' : 'repeat(3, 1fr)'"
+  <Grid
+    :class="$style.wrapper"
+    :template-columns="$isMobile ? '1fr' : '1fr 5fr 3fr'"
+    template-rows="'1fr 1fr 1fr'"
     align-items="center"
   >
-    <CardHome :class="$style.card" />
-  </GridWrapper>
+    <Hero :class="$style.hero">
+      <template #image>
+        <TitleImage source="title_front_v2" alt="title frontend" />
+      </template>
+      <h1 :class="$style.title">
+        {{ 'Developer' | capitalize }}
+      </h1>
+      <template #subtitle>
+        <p :class="$style.subtitle">
+          based in Paris
+        </p>
+      </template>
+    </Hero>
+    <Main :class="$style.main" />
+    <Contact />
+  </Grid>
 </template>
 
 <script>
-import GridWrapper from '@/components/Grid'
-import CardHome from '@/modules/CardHome'
+import Grid from '@/components/Grid.vue'
+import Hero from '@/components/Hero.vue'
+import TitleImage from '@/components/Image.vue'
+import MySelf from '@/components/MySelf.vue'
+
 export default {
   name: 'HomePage',
   layout: 'Header',
   components: {
-    GridWrapper,
-    CardHome
+    Grid,
+    Hero,
+    TitleImage,
+    Main: MySelf
   }
 }
 </script>
 
 <style lang="scss" module>
-.container {
-  height: 80vh;
+.wrapper {
+  margin-top: spacer(8);
+  height: 100vh;
 }
 
-@include bp('sm') {
-  .card {
-    grid-column-start: 2;
+.hero {
+  grid-column-start: 2;
+}
+
+.title {
+  @include font($fontMediumSize, $purewhite, $fontSemiBoldWeight);
+  @include bp('sm') {
+    @include font($fontBigSize, $purewhite, $fontSemiBoldWeight);
   }
+}
+
+.subtitle {
+  @include font($fontSmallSize, $purewhite, $fontRegularWeight);
+}
+
+.main {
+  grid-row-start: 2;
+  grid-column-start: 2;
 }
 </style>

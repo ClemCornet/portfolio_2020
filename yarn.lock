@@ -5160,6 +5160,13 @@ flatten@^1.0.2:
   resolved "https://registry.yarnpkg.com/flatten/-/flatten-1.0.3.tgz#c1283ac9f27b368abc1e36d1ff7b04501a30356b"
   integrity sha512-dVsPA/UwQ8+2uoFe5GHtiBMu48dWLTdsuEd7CKGlZlD78r1TTWBvDuFaFGKCo/ZfEr95Uk56vZoX86OsHkUeIg==
 
+flip-toolkit@^7.0.7:
+  version "7.0.9"
+  resolved "https://registry.yarnpkg.com/flip-toolkit/-/flip-toolkit-7.0.9.tgz#0f2e7f1334b92c382b53f9fefd988c492eed2a4b"
+  integrity sha512-SrLgkmYVjBujmnL1JGmnduFKRygkZxDTTBknxbQV75lk4niZAE57OI1Siw9HRmylKsmzLgIZfAK7gm2AHIG+qQ==
+  dependencies:
+    react-flip-toolkit "^7.0.8"
+
 flush-write-stream@^1.0.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/flush-write-stream/-/flush-write-stream-1.1.1.tgz#8dd7d873a1babc207d94ead0c2e0e44276ebf2e8"
@@ -8930,6 +8937,13 @@ rc@^1.0.1, rc@^1.1.6:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-flip-toolkit@^7.0.8:
+  version "7.0.9"
+  resolved "https://registry.yarnpkg.com/react-flip-toolkit/-/react-flip-toolkit-7.0.9.tgz#d10cd1d3dea8e6d8d0cf90929cf70ccd2eba76f5"
+  integrity sha512-YQd/N9Bt0Kia3eOpO8R7XqHt0bNC8POzidkzM1ATnogKK4h08IwsBk8YmRaybpKbSHKIwgR/UVT0wTwoyNZUVw==
+  dependencies:
+    rematrix "0.2.2"
+
 read-cache@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/read-cache/-/read-cache-1.0.0.tgz#e664ef31161166c9751cdbe8dbcf86b5fb58f774"
@@ -9161,6 +9175,11 @@ relateurl@0.2.x, relateurl@^0.2.7:
   version "0.2.7"
   resolved "https://registry.yarnpkg.com/relateurl/-/relateurl-0.2.7.tgz#54dbf377e51440aca90a4cd274600d3ff2d888a9"
   integrity sha1-VNvzd+UUQKypCkzSdGANP/LYiKk=
+
+rematrix@0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/rematrix/-/rematrix-0.2.2.tgz#c96a050260782db9908904885991256e23beda5d"
+  integrity sha512-agFFS3RzrLXJl5LY5xg/xYyXvUuVAnkhgKO7RaO9J1Ssth6yvbO+PIiV67V59MB5NCdAK2flvGvNT4mdKVniFA==
 
 remove-trailing-separator@^1.0.1:
   version "1.1.0"
@@ -10858,6 +10877,13 @@ vue-eslint-parser@^7.0.0:
     espree "^6.1.2"
     esquery "^1.0.1"
     lodash "^4.17.15"
+
+vue-flip-toolkit@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/vue-flip-toolkit/-/vue-flip-toolkit-1.6.0.tgz#71834f3e57df105268734c805d73e35106299463"
+  integrity sha512-ef/v+W46yrUu+2CroInsIzbMIf/oBpvUs5JDV6K3OMjvXKxFrXYM7UYfFZU0X8LsUv8woCg7QS1DTPPn8HEokA==
+  dependencies:
+    flip-toolkit "^7.0.7"
 
 vue-hot-reload-api@^2.3.0:
   version "2.3.4"

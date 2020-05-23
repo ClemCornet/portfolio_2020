@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { props, style } from './script.js'
+import { props, style } from '../scripts/shortcutsFlex'
 export default {
   name: 'FlexComp',
   inheritAttrs: false,
@@ -25,7 +25,5 @@ export default {
 <style lang="scss" module>
 .container {
   display: flex;
-  background: $purewhite;
-  border-radius: 20px;
 }
 </style>

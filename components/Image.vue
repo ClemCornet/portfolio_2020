@@ -1,9 +1,9 @@
 <template>
   <div>
     <img
-      :class="{ [$style.rounded]: rounded }"
-      :style="`width: ${width}px; height: ${width}px`"
-      :src="require(`@/assets/${source}.jpg`)"
+      :style="!!width ? `width: ${width}px; height: ${width}px` : ''"
+      :class="[$style.image, { [$style.rounded]: rounded }]"
+      :src="require(`@/assets/images/${source}.png`)"
       :alt="alt"
     >
   </div>
@@ -18,8 +18,8 @@ export default {
       required: true
     },
     width: {
-      type: Number,
-      required: true
+      type: [String, Number],
+      default: null
     },
     rounded: {
       type: Boolean,
@@ -35,6 +35,10 @@ export default {
 </script>
 
 <style lang="scss" module>
+// .image {
+//   width: 100%;
+//   height: 100%;
+// }
 .rounded {
   border-radius: 50%;
 }

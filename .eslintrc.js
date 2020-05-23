@@ -18,6 +18,8 @@ module.exports = {
   plugins: ['prettier'],
   // add your custom rules here
   rules: {
-    "space-before-function-paren": ["error", "never"],
+    semi: ['error', 'never'],
+    quotes: ['error', 'single'],
+    'space-before-function-paren': ['error', 'never']
   }
 }

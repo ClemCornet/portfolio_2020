@@ -1,4 +1,3 @@
-/* eslint-disable */
 const SHORTCUTS = [
   { id: 'grid', attr: 'grid' },
   { id: 'autoRows', attr: 'gridAutoRows' },
@@ -32,6 +31,8 @@ SHORTCUTS.forEach((shortcut) => {
 })
 
 export const style = $props => SHORTCUTS.reduce((accu, { id, attr }) => {
-  if ($props[id]) accu[attr] = $props[id]
-    return accu
+  if ($props[id]) {
+    accu[attr] = $props[id]
+  }
+  return accu
 }, $props.style || {})
