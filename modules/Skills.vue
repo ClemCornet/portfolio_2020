@@ -20,6 +20,17 @@ export default {
   name: 'Skills',
   components: {
     Hero
+  },
+  props: {
+    current: {
+      type: String,
+      required: true
+    }
+  },
+  computed: {
+    isActive() {
+      return this.$options.name === this.current
+    }
   }
 }
 </script>

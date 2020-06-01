@@ -5,7 +5,7 @@
     template-rows="'1fr 1fr 1fr'"
   >
     <SideBar :class="$style.sidebar" />
-    <component :is="currentPage" />
+    <component :is="currentPage" :current="currentPage" />
   </Grid>
 </template>
 
@@ -19,7 +19,7 @@ import Projects from '@/modules/Projects.vue'
 import Contact from '@/modules/Contact.vue'
 
 export default {
-  name: 'HomePage',
+  name: 'Index',
   layout: 'Header',
   components: {
     Grid,
@@ -30,7 +30,7 @@ export default {
     Contact
   },
   computed: {
-    ...mapGetters('pages', ['pages', 'currentIndex', 'isPageChanging']),
+    ...mapGetters('pages', ['pages', 'currentIndex']),
     getPageComp() {
       let components = []
       this.pages.map(({ component }) => {
@@ -40,12 +40,15 @@ export default {
     },
     currentPage() {
       return this.getPageComp[this.currentIndex]
+    },
+    isActive() {
+      return this.currentIndex === this.getPageComp.indexOf(this.currentPage)
     }
   },
   mounted() {
     setTimeout(() => {
       window.addEventListener('wheel', this.wheel)
-    }, 3500)
+    }, 500)
   },
   methods: {
     ...mapActions('pages', ['navigatePage']),

@@ -1,6 +1,6 @@
 export default {
   navigatePage({ commit, state: { duration } }, index) {
-    // commit('loadIndex', index)
+    // commit('ACTIVATE_PAGE', index)
 
     setTimeout(() => {
       commit('UPDATE_INDEX', index)

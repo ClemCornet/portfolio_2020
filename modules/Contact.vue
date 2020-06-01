@@ -1,11 +1,8 @@
 <template>
   <div>
     <Hero :class="$style.hero">
-      <template #image>
-        <TitleImage source="title_frontend" alt="title frontend" />
-      </template>
       <h1 :class="$style.title">
-        ici la page contact ma gueule
+        CONTACT
       </h1>
       <template #subtitle>
         <p :class="$style.subtitle">
@@ -18,13 +15,22 @@
 
 <script>
 import Hero from '@/components/Hero.vue'
-import TitleImage from '@/components/Image.vue'
 
 export default {
-  name: 'Page01',
+  name: 'Contact',
   components: {
-    Hero,
-    TitleImage
+    Hero
+  },
+  props: {
+    current: {
+      type: String,
+      required: true
+    }
+  },
+  computed: {
+    isActive() {
+      return this.$options.name === this.current
+    }
   }
 }
 </script>

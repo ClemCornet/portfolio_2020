@@ -6,22 +6,26 @@ export default () => ({
     {
       id: 1,
       name: 'MySelf',
-      component: 'Home'
+      component: 'Home',
+      isActive: true
     },
     {
       id: 2,
       name: 'Skills',
-      component: 'Skills'
+      component: 'Skills',
+      isActive: false
     },
     {
       id: 3,
       name: 'Projects',
-      component: 'Projects'
+      component: 'Projects',
+      isActive: false
     },
     {
       id: 4,
       name: 'Contact',
-      component: 'Contact'
+      component: 'Contact',
+      isActive: false
     }
   ],
   social: [
