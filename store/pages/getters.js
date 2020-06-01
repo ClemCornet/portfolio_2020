@@ -4,5 +4,8 @@ export default {
   },
   pages(state) {
     return state.pages
+  },
+  content: state => (currentPage) => {
+    return state.pages.find(page => page.component === currentPage)
   }
 }

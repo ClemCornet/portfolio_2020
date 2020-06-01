@@ -3,7 +3,7 @@
     <div :class="$style.wrapper">
       <div
         :class="$style.fillbar"
-        :style="{ transform: `scaleY(${0.25})` }"
+        :style="{ transform: `scaleY(${2 / dots.length})` }"
       />
       <div
         v-for="dot in dots"

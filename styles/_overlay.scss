@@ -1,0 +1,11 @@
+@mixin overlay($list: (
+  position: absolute,
+  value: 0,
+)) {
+  position: map-get($list, position);
+  top: map-get($list, value);
+  right: map-get($list, value);
+  bottom: map-get($list, value);
+  left: map-get($list, value);
+  @content;
+}

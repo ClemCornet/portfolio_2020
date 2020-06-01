@@ -1,32 +1,23 @@
 <template>
   <div>
-    <Hero
-      :class="[$style.hero]"
-    >
+    <Hero :class="[$style.hero,{[$style.isActive]: active}]">
       <template #image>
         <TitleImage
           source="title_frontend"
           alt="title frontend"
-          :class="[$style.image, {
-            [$style.isActive]: active,
-          }]"
+          :class="$style.image"
         />
       </template>
-      <h1
-        :class="[$style.title,
-                 {
-                   [$style.isActive]: active,
-                 }]"
-      >
-        {{ 'Developer' | capitalize }}
+      <h1 :class="$style.title">
+        {{ content.title | capitalize }}
       </h1>
       <template #subtitle>
         <p :class="$style.subtitle">
-          based in Paris
+          {{ content.subtitle }}
         </p>
       </template>
     </Hero>
-    <MySelf />
+    <MySelf :description="content.description" />
   </div>
 </template>
 
@@ -53,6 +44,11 @@ export default {
       active: false
     }
   },
+  computed: {
+    content() {
+      return this.$store.getters['pages/content'](this.current)
+    }
+  },
   mounted() {
     this.isActive()
   },
@@ -70,6 +66,10 @@ export default {
 
 <style lang="scss" module>
 
+.hero {
+  margin-top: spacer(8)
+}
+
 .title {
   @include font($fontMediumSize, $purewhite, $fontSemiBoldWeight);
   @include bp('sm') {
@@ -86,22 +86,6 @@ export default {
   grid-column-start: 2;
 }
 
-// .title {
-//   opacity: 0;
-//   transition: all 5s ease-out;
-//   &.isActive {
-//     opacity: 1;
-//   }
-// }
-
-// .title {
-//   opacity: 0;
-//   transition: all 5s ease-out;
-//   &.isActive {
-//     opacity: 1;
-//   }
-// }
-
 .title {
   position: relative;
 
@@ -111,47 +95,39 @@ export default {
     transform-origin: left;
     transition: transform 1s ease-out;
     content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    @include overlay
   }
 }
 
-.title {
-   &.isActive {
-      &::after {
-        transform: scaleX(0);
-        transform-origin: right;
+.isActive {
+  .title {
+    &::after {
+      transform: scaleX(0);
+      transform-origin: right;
       }
-    }
-  }
-
-  .image {
-  position: relative;
-
-  &::after {
-    background-color: $bluedark;
-    transform: scaleX(1);
-    transform-origin: left;
-    transition: transform 1s ease-out;
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
   }
 }
 
 .image {
-   &.isActive {
-      &::after {
-        transform: scaleX(0);
-        transform-origin: right;
-      }
+  position: relative;
+
+  &::after {
+    background-color: $bluedark;
+    transform: scaleX(1);
+    transform-origin: left;
+    transition: transform 1s ease-out;
+    content: "";
+    @include overlay
+  }
+}
+
+.isActive {
+  .image {
+    &::after {
+      transform: scaleX(0);
+      transform-origin: right;
     }
   }
+}
 
 </style>

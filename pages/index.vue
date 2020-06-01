@@ -40,9 +40,6 @@ export default {
     },
     currentPage() {
       return this.getPageComp[this.currentIndex]
-    },
-    isActive() {
-      return this.currentIndex === this.getPageComp.indexOf(this.currentPage)
     }
   },
   mounted() {

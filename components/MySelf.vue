@@ -9,9 +9,7 @@
       :width="160"
     />
     <p :class="[$style.paragraph, {[$style.bordered]: $isMobile }]">
-      Hello, moi c'est Clément. Passionné d'informatique depuis tout jeune,
-      j'ai commencé à m'intéresser au développement web en parallèle de
-      mes études dans la communication et le marketing.
+      {{ description }}
     </p>
   </Grid>
 </template>
@@ -25,6 +23,12 @@ export default {
   components: {
     Avatar,
     Grid
+  },
+  props: {
+    description: {
+      type: String,
+      required: true
+    }
   }
 }
 </script>
