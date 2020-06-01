@@ -1,6 +1,6 @@
-# portfolio_strapi
+# portfolio_2020
 
-> portfolio with nuxt and strapi
+> portfolio with nuxt
 
 ## Build Setup
 
