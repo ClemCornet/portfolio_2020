@@ -1,6 +1,6 @@
-$fontSmallSize: 1.1rem;
+$fontSmallSize: 1rem;
 $fontMediumSize: 1.5rem;
-$fontLargeSize: 2.2rem;
+$fontLargeSize: 2.8rem;
 $fontBigSize: 6rem;
 
 $fontLightWeight: 300;
@@ -14,4 +14,11 @@ $fontBlackWeight: 800;
   font-size: $size;
   color: $color;
   font-weight: $weight;
+}
+
+@mixin paragraph() {
+  font-size: $fontSmallSize;
+  font-weight: $fontLightWeight;
+  color: $purewhite;
+  @content;
 }

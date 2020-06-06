@@ -7,5 +7,8 @@ export default {
   },
   content: state => (currentPage) => {
     return state.pages.find(page => page.component === currentPage)
+  },
+  social(state) {
+    return state.social
   }
 }

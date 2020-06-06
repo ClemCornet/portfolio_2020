@@ -8,7 +8,7 @@
       :rounded="true"
       :width="160"
     />
-    <p :class="[$style.paragraph, {[$style.bordered]: $isMobile }]">
+    <p :class="[$style.description, {[$style.bordered]: $isMobile }]">
       {{ description }}
     </p>
   </Grid>
@@ -34,8 +34,8 @@ export default {
 </script>
 
 <style lang="scss" module>
-.paragraph {
-  @include font($fontSmallSize, $purewhite, $fontLightWeight);
+.description {
+  @include paragraph();
   padding: spacer(8) spacer(4) 0 spacer(4);
   text-justify: right;
 }

@@ -1,11 +1,11 @@
 <template>
   <Grid
     :class="$style.wrapper"
-    :template-columns="$isMobile ? '1fr' : '2fr 5fr 3fr'"
-    template-rows="'1fr 1fr 1fr'"
+    :template-columns="$isMobile ? '1fr' : '1fr 5fr'"
   >
-    <SideBar :class="$style.sidebar" />
+    <SideBar v-if="!$isMobile" :class="$style.sidebar" />
     <component :is="currentPage" :current="currentPage" />
+    <SocialWrapper v-if="currentPage === 'Home'" :class="$style.social" />
   </Grid>
 </template>
 
@@ -13,6 +13,7 @@
 import { mapGetters, mapActions } from 'vuex'
 import Grid from '@/components/Grid.vue'
 import SideBar from '@/components/SideBar.vue'
+import SocialWrapper from '@/components/SocialWrapper.vue'
 import Home from '@/modules/Home.vue'
 import Skills from '@/modules/Skills.vue'
 import Projects from '@/modules/Projects.vue'
@@ -24,10 +25,16 @@ export default {
   components: {
     Grid,
     SideBar,
+    SocialWrapper,
     Home,
     Skills,
     Projects,
     Contact
+  },
+  data() {
+    return {
+      isLoaded: false
+    }
   },
   computed: {
     ...mapGetters('pages', ['pages', 'currentIndex']),
@@ -42,26 +49,33 @@ export default {
       return this.getPageComp[this.currentIndex]
     }
   },
+  watch: {
+    currentIndex() {
+      setTimeout(() => {
+        this.isLoaded = false
+      }, 250)
+    }
+  },
   mounted() {
-    setTimeout(() => {
+    this.$nextTick(() => {
       window.addEventListener('wheel', this.wheel)
-    }, 500)
+    })
   },
   methods: {
     ...mapActions('pages', ['navigatePage']),
     updatePage(index) {
       if (index >= 0 && index < this.getPageComp.length) {
-        // this.isAnimating = true
-        // this.isChanging = true
-        // this.isLoading = true
+        this.isLoaded = true
         this.navigatePage(index)
       }
     },
     wheel({ deltaY }) {
-      if (deltaY > 0) {
-        this.updatePage(this.currentIndex + 1)
-      } else if (deltaY < 0) {
-        this.updatePage(this.currentIndex - 1)
+      if (!this.isLoaded) {
+        if (deltaY > 0) {
+          this.updatePage(this.currentIndex + 1)
+        } else if (deltaY < 0) {
+          this.updatePage(this.currentIndex - 1)
+        }
       }
     }
   }
@@ -76,4 +90,11 @@ export default {
 .sidebar {
   grid-row-end: span 2;
 }
+
+// .social {
+//   @include bp(sm) {
+//     grid-column-start: 3;
+//     grid-row-start: 2;
+//   }
+// }
 </style>

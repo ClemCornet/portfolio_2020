@@ -3,7 +3,7 @@
     <div :class="$style.wrapper">
       <div
         :class="$style.fillbar"
-        :style="{ transform: `scaleY(${2 / dots.length})` }"
+        :style="{ transform: `scaleY(${(currentIndex + 1) / dots.length})` }"
       />
       <div
         v-for="dot in dots"
@@ -18,12 +18,16 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'Sidebar',
   data() {
     return {
       dots: [0, 1, 2, 3]
     }
+  },
+  computed: {
+    ...mapGetters('pages', ['currentIndex'])
   }
 }
 </script>
@@ -70,6 +74,7 @@ export default {
   right: 0;
   bottom: 0;
   left: 0;
+  transition: transform 0.5s ease-out;
 }
 
 .dot {

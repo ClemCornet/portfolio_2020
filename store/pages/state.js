@@ -59,7 +59,7 @@ export default () => ({
       link: 'http://github.com'
     },
     {
-      id: 2,
+      id: 3,
       name: 'Twitter',
       icon: 'assets/twitter',
       link: 'http://twitter.com'
