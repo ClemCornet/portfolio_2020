@@ -5,21 +5,37 @@
         {{ 'Projets' | capitalize }}
       </h1>
       <template #subtitle>
-        <p :class="$style.subtitle">
-          ici les projetsssss
-        </p>
+        everything I could do...
       </template>
     </Hero>
+    <Grid
+      :class="$style.wrapper"
+      :template-columns="$isMobile ? '1fr' : '1fr 1fr'"
+      :template-rows="$isMobile ? '1fr' : '1fr 10fr'"
+    >
+      <Tabs :projects="projects.length">
+        <Tab v-for="project in projects" :key="project.id">
+          {{ project.title }}
+        </Tab>
+      </Tabs>
+    </Grid>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+import Grid from '@/components/Grid.vue'
 import Hero from '@/components/Hero.vue'
+import Tabs from '@/components/TabsProjects.vue'
+import Tab from '@/components/TabProject.vue'
 
 export default {
   name: 'Projects',
   components: {
-    Hero
+    Hero,
+    Grid,
+    Tabs,
+    Tab
   },
   props: {
     current: {
@@ -28,6 +44,7 @@ export default {
     }
   },
   computed: {
+    ...mapGetters('projects', ['projects']),
     isActive() {
       return this.$options.name === this.current
     }

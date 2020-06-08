@@ -7,6 +7,9 @@
       <h1 :class="$style.title">
         {{ 'Skills' | capitalize }}
       </h1>
+      <template #subtitle>
+        my awesome skills...
+      </template>
     </Hero>
     <Flex
       v-if="!isCollapsed"

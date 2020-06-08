@@ -12,6 +12,7 @@
       />
     </Grid>
     <TechnoDescription
+      :class="$style.description"
       :illustration="illustration"
       :title="title"
       :description="description"
@@ -65,15 +66,23 @@ export default {
   }
   @media screen and (min-width: 992px) and (max-width: 1200px) {
     grid-template-columns: repeat(auto-fill, 200px);
+    grid-template-rows: 200px 200px;
   }
   @media screen and (min-width: 1200px) and (max-width: 1400px) {
     grid-template-columns: repeat(auto-fill, 300px);
+    grid-template-rows: 200px 200px;
   }
   @media screen and (min-width: 1400px) and (max-width: 1600px){
     grid-template-columns: repeat(auto-fill, 400px);
+    grid-template-rows: 100px 100px;
   }
   @media screen and (min-width: 1600px) {
     grid-template-columns: repeat(auto-fill, 500px);
+    grid-template-rows: 100px 100px;
   }
+}
+
+.description {
+
 }
 </style>

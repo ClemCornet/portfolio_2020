@@ -90,11 +90,4 @@ export default {
 .sidebar {
   grid-row-end: span 2;
 }
-
-// .social {
-//   @include bp(sm) {
-//     grid-column-start: 3;
-//     grid-row-start: 2;
-//   }
-// }
 </style>
