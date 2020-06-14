@@ -1,6 +1,6 @@
 <template>
   <Grid
-    :class="$style.wrapper"
+    :class="[$style.wrapper, {[$style.isActive]: active}]"
     :template-rows="$isMobile ? '1fr' : '1fr 1fr 1fr'"
   >
     <Hero :class="$style.hero">
@@ -23,6 +23,7 @@
         :description="skill.description"
         :bordered="skill.bordered"
         :technos="skill.technos"
+        :active="active"
         @collapsed="collapsed"
       />
     </Flex>
@@ -71,9 +72,6 @@ export default {
   },
   computed: {
     ...mapGetters('skills', ['skills']),
-    // isActive() {
-    //   return this.$options.name === this.current
-    // },
     collapsedSkills() {
       const { title, description, illustration, technos } = this.getCollapsedSkills(this.idxCollapsed)
       return {
@@ -115,18 +113,39 @@ export default {
   margin-top: spacer(8);
 }
 .title {
+  position: relative;
   @include font($fontMediumSize, $purewhite, $fontSemiBoldWeight);
   @include bp('sm') {
     @include font($fontBigSize, $purewhite, $fontSemiBoldWeight);
   }
+  &:after {
+    @include overlayHorizontal()
+  }
 }
 .item {
+  position: relative;
   padding-right: spacer(4);
   &.large {
     padding-left: spacer(4);
   }
+   &:after {
+    @include overlayVertical()
+  }
 }
  .skills {
    height: 100%;
+}
+
+.isActive {
+  .title {
+    &:after {
+    @include overlayHorizontalHide()
+    }
+  }
+  .item {
+    &:after {
+    @include overlayVerticalHide()
+    }
+  }
 }
 </style>

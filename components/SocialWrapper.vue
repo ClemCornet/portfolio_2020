@@ -4,6 +4,7 @@
       <SocialButton
         v-for="network in social"
         :key="network.id"
+        :class="[$style.button, {[$style.active]: show}]"
         :network="network"
       />
     </Flex>
@@ -21,13 +22,43 @@ export default {
     Flex,
     SocialButton
   },
+  props: {
+    active: {
+      type: Boolean,
+      required: true
+    }
+  },
+  data() {
+    return {
+      show: false
+    }
+  },
   computed: {
     ...mapGetters('pages', ['social'])
+  },
+  mounted() {
+    this.isActive()
+  },
+  methods: {
+    isActive() {
+      if (this.active) {
+        setTimeout(() => {
+          this.show = this.active
+        }, 1500)
+      }
+    }
   }
 }
 </script>
 
 <style lang="scss" module>
+.button {
+  transform: scale(0);
+  transition: transform 0.7s ease-in-out;
+  &.active {
+    transform: scale(1);
+  }
+}
 .title {
     color: white;
     text-align: center;

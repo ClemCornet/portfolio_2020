@@ -7,7 +7,7 @@
     <ImageNumber
       :source="image"
       alt="number"
-      :class="[$style.image]"
+      :class="[$style.image, {[$style.isActive]: active}]"
       :width="150"
       :height="150"
     />
@@ -57,6 +57,10 @@ export default {
     technos: {
       type: Array,
       required: true
+    },
+    active: {
+      type: Boolean,
+      required: true
     }
   },
   methods: {
@@ -68,6 +72,13 @@ export default {
 </script>
 
 <style lang="scss" module>
+.image {
+  position: relative;
+  &:after {
+    @include overlayVertical()
+  }
+}
+
 .title {
   @include font($fontMediumSize, $purewhite, $fontSemiBoldWeight);
   @include bp('sm') {
@@ -91,5 +102,13 @@ export default {
     font-size: $fontMediumSize;
     color: $purewhite;
     cursor: pointer;
+}
+
+.isActive {
+  &.image {
+    &:after {
+      @include overlayVerticalHide()
+    }
+  }
 }
 </style>

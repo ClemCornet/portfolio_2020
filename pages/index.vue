@@ -3,9 +3,20 @@
     :class="$style.wrapper"
     :template-columns="$isMobile ? '1fr' : '0.5fr 5fr'"
   >
-    <SideBar v-if="!$isMobile" :class="$style.sidebar" @changePage="changePage" />
-    <component :is="currentPage" :current="currentPage" />
-    <SocialWrapper v-if="currentPage === 'Home'" :class="$style.social" />
+    <SideBar
+      v-if="!$isMobile"
+      :class="$style.sidebar"
+      @changePage="changePage"
+    />
+    <component
+      :is="currentPage"
+      :current="currentPage"
+    />
+    <SocialWrapper
+      v-if="currentPage === 'Home'"
+      :active="currentIndex === 0"
+      :class="$style.social"
+    />
   </Grid>
 </template>
 

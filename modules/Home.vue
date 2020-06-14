@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <Hero :class="[$style.hero, {[$style.isActive]: active}]">
+  <div :class="{[$style.isActive]: active}">
+    <Hero :class="[$style.hero]">
       <template #image>
         <TitleImage
           source="title_frontend"
@@ -19,10 +19,7 @@
         </p>
       </template>
     </Hero>
-    <div :class="[$style.myself, {[$style.isActive]: active}]">
-      ça, ça va là
-    </div>
-    <MySelf :description="content.description" />
+    <MySelf :class="$style.myself" :description="content.description" />
   </div>
 </template>
 
@@ -92,16 +89,16 @@ export default {
   position: relative;
   @include font($fontMediumSize, $purewhite, $fontRegularWeight);
    &:after {
-    @include overlayVertical((position: absolute, value: 0, delay: 2s));
+    @include overlayHorizontal((position: absolute, value: 0, delay: 2s));
   }
 }
 
 .myself {
-  //margin-top: spacer(12);
+  margin-top: spacer(12);
   position: relative;
-  //  &:after {
-  //   @include overlayHorizontal((position: absolute, value: 0, delay: 2.5s));
-  // }
+    &:after {
+     @include overlayHorizontal((position: absolute, value: 0, delay: 2s));
+   }
 }
 
 .main {
@@ -117,7 +114,7 @@ export default {
   }
   .subtitle {
     &:after {
-      @include overlayVerticalHide
+      @include overlayHorizontalHide
       }
   }
 

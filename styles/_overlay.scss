@@ -31,8 +31,8 @@
   top: map-get($list, value);
   right: map-get($list, value);
   bottom: map-get($list, value);
-  left: 0;
-  background-color: red;
+  left:  map-get($list, value);
+  background-color: $bluedark;
   transform: scaleY(1);
   transform-origin: top;
   transition: transform  map-get($list, delay) ease-in-out;
