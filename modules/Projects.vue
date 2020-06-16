@@ -1,14 +1,14 @@
 <template>
-  <Grid :class="$style.wrapper" :template-rows="$isMobile ? '1fr' : '1fr 2fr'">
+  <Grid
+    :class="[$style.wrapper, {[$style.isActive]: active}]"
+    :template-rows="$isMobile ? '1fr' : '1fr 2fr'"
+  >
     <Hero :class="$style.hero">
       <h1 :class="$style.title">
         {{ 'Projets' | capitalize }}
       </h1>
-      <template #subtitle>
-        everything I could do...
-      </template>
     </Hero>
-    <Tabs :projects="projects.length">
+    <Tabs :projects="projects.length" :active="active">
       <Tab v-for="project in projects" :key="project.id">
         <template #leftSide>
           <div :class="$style.leftSide">
@@ -82,9 +82,6 @@ export default {
   },
   computed: {
     ...mapGetters('projects', ['projects'])
-    // isActive() {
-    //   return this.$options.name === this.current
-    // }
   },
   mounted() {
     this.isActive()
@@ -98,9 +95,13 @@ export default {
 }
 
 .title {
+  position: relative;
   @include font($fontMediumSize, $purewhite, $fontSemiBoldWeight);
   @include bp('sm') {
     @include font($fontBigSize, $purewhite, $fontSemiBoldWeight);
+  }
+  &:after {
+    @include overlayHorizontal()
   }
 }
 
@@ -112,6 +113,8 @@ export default {
   margin-top: spacer(8);
   padding-right: spacer(6);
   border-right: 1px solid $purewhite;
+  transition: all 1.2s ease-in;
+  opacity: 0;
 }
 
 .name {
@@ -147,5 +150,21 @@ margin: spacer(2) 0 spacer(1) 0;
 
 .rightSide {
   margin-left: spacer(6);
+  opacity: 0;
+  transition: all 1.2s ease-in;
+}
+
+.isActive {
+  .title {
+    &:after {
+    @include overlayHorizontalHide()
+    }
+  }
+  .leftSide {
+    opacity: 1;
+  }
+  .rightSide {
+    opacity: 1;
+  }
 }
 </style>

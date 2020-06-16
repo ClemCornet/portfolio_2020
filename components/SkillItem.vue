@@ -2,7 +2,7 @@
   <Flex
     direction="column"
     flex="1"
-    :class="[$style.item, {[$style.bordered]: bordered}]"
+    :class="[$style.item, {[$style.bordered]: bordered}, {[$style.isActive]: active}]"
   >
     <ImageNumber
       :source="image"
@@ -72,12 +72,6 @@ export default {
 </script>
 
 <style lang="scss" module>
-.image {
-  position: relative;
-  &:after {
-    @include overlayVertical()
-  }
-}
 
 .title {
   @include font($fontMediumSize, $purewhite, $fontSemiBoldWeight);
@@ -86,15 +80,22 @@ export default {
   }
 }
 
-.item {
-  &.bordered {
-    border-right: solid 1px $purewhite;
+  .item {
+    &.bordered {
+      &:before {
+      position: absolute;
+      content: '';
+      right: 0;
+      width: 1px;
+      height: 100%;
+      background-color: $purewhite;
+      }
+    }
   }
-}
 
 .description {
     @include paragraph();
-    margin-top: spacer(4  );
+    margin-top: spacer(4);
 }
 
 .button {
@@ -102,13 +103,5 @@ export default {
     font-size: $fontMediumSize;
     color: $purewhite;
     cursor: pointer;
-}
-
-.isActive {
-  &.image {
-    &:after {
-      @include overlayVerticalHide()
-    }
-  }
 }
 </style>

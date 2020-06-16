@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ul :class="$style.nav">
+    <ul :class="[$style.nav, {[$style.isActive]: active}]">
       <li
         v-for="n in projects"
         :key="n"
@@ -19,12 +19,17 @@ export default {
     projects: {
       type: Number,
       required: true
+    },
+    active: {
+      type: Boolean,
+      required: true
     }
   },
   data() {
     return {
       currentIndex: 0,
-      tabs: []
+      tabs: [],
+      isActive: false
     }
   },
   created() {
@@ -32,6 +37,7 @@ export default {
   },
   mounted() {
     this.selectProject(0)
+    this.isActive = this.active
   },
   methods: {
     selectProject(i) {
@@ -47,7 +53,12 @@ export default {
 <style lang="scss" module>
 .nav {
   display: flex;
+  position: relative;
+  opacity: 0;
   width: 35%;
+  &:after {
+    @include overlayHorizontal()
+  }
 }
 
 .itemNav {
@@ -57,6 +68,15 @@ export default {
   margin-right: spacer(2);
   &.isActive {
     background: $greenmain;
+  }
+}
+
+.isActive {
+  &.nav {
+    opacity: 1;
+    &:after {
+    @include overlayHorizontalHide()
+    }
   }
 }
 </style>
