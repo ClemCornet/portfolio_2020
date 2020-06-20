@@ -1,23 +1,19 @@
 <template>
-  <transition
-    name="fade"
+  <Grid
+    :template-columns="$isMobile ? '1fr' : '1fr 1fr'"
+    :class="[$style.container, {[$style.isActive]: isActive}]"
   >
-    <div
-      v-if="isActive"
-      :class="$style.project"
-    >
-      <slot name="leftSide" />
-      <slot name="rightSide" />
-    </div>
-  </transition>
+    <slot name="leftSide" />
+    <slot name="rightSide" />
+  </Grid>
 </template>
 
 <script>
-// import Flex from '@/components/Flex.vue'
+import Grid from '@/components/Grid.vue'
 export default {
   name: 'TabProject',
   components: {
-    // Flex
+    Grid
   },
   data() {
     return {
@@ -26,16 +22,18 @@ export default {
   }
 }
 </script>
+
 <style lang="scss" module>
-.project {
-  display: flex;
-}
-</style>
-<style>
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
-}
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+.container {
+  display: none;
   opacity: 0;
+  transition: all 1s linear;
+}
+
+.container {
+  &.isActive {
+    display: grid;
+    opacity: 1;
+  }
 }
 </style>

@@ -2,6 +2,7 @@ export default () => ({
   projects: [
     {
       id: 1,
+      component: 'project01',
       title: 'FoodReview',
       type: 'web application',
       context: 'school project',
@@ -13,6 +14,7 @@ export default () => ({
     },
     {
       id: 2,
+      component: 'project02',
       title: 'Meero app',
       type: 'saas / web application',
       context: 'professional project',
@@ -24,6 +26,7 @@ export default () => ({
     },
     {
       id: 3,
+      component: 'project03',
       title: 'DearCommunication',
       type: 'showcase website',
       context: 'professional project',
@@ -35,6 +38,7 @@ export default () => ({
     },
     {
       id: 4,
+      component: 'project04',
       title: 'Javascript BoardGame',
       type: 'browser game',
       context: 'school project',
@@ -46,6 +50,7 @@ export default () => ({
     },
     {
       id: 5,
+      component: 'project05',
       title: 'Ostéopathe',
       type: 'showcase website',
       context: 'school project',

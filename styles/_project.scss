@@ -1,0 +1,56 @@
+.containerProject {
+    position: relative;
+    &:after {
+    @include overlayHorizontal()
+  }
+}
+
+.leftSide {
+  padding-right: spacer(6);
+  border-right: 1px solid $purewhite;
+  position: relative;
+  height: 80%;
+}
+
+.name {
+  @include font($fontLargeSize, $purewhite, $fontRegularWeight);
+}
+
+.type {
+  @include font(1.6rem, $greenmain, $fontRegularWeight);
+  line-height: 1.5;
+}
+
+.context {
+@include font(1.3rem, $purewhite, $fontMediumWeight);
+margin: spacer(2) 0 spacer(1) 0;
+}
+
+.technos {
+  display: flex;
+  margin-bottom: spacer(6);
+}
+
+.techno {
+  @include font(0.9rem, $purewhite, $fontRegularWeight);
+  border: 1px solid $purewhite;
+  border-radius: 50px;
+  margin-right: spacer(2);
+  padding: 4px spacer(3);
+}
+
+.resume {
+  @include paragraph();
+}
+
+.rightSide {
+  margin-left: spacer(6);
+}
+
+.isActive {
+  &.containerProject {
+    &:after {
+    @include overlayHorizontalHide()
+    }
+  }
+}
