@@ -34,7 +34,7 @@ export default {
     ImageNumber
   },
   props: {
-    index: {
+    id: {
       type: Number,
       required: true
     },
@@ -65,7 +65,7 @@ export default {
   },
   methods: {
     collapsed() {
-      this.$emit('collapsed', this.index)
+      this.$emit('collapsed', this.id)
     }
   }
 }

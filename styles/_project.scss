@@ -14,7 +14,7 @@
   padding-right: spacer(6);
   border-right: 1px solid $purewhite;
   position: relative;
-  height: 80%;
+  height: 70%;
 }
 
 .name {
@@ -50,6 +50,10 @@ margin: spacer(2) 0 spacer(1) 0;
 
 .rightSide {
   margin-left: spacer(6);
+}
+
+.image {
+  margin-left: spacer(12);
 }
 
 .isActive {

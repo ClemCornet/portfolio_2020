@@ -1,16 +1,22 @@
 <template>
   <Grid
     :template-columns="$isMobile ? '1fr' : '2fr 1fr'"
+    template-row="1fr 5fr"
+    :class="{ [$style.active]: active }"
   >
-    <Grid :class="$style.wrapperLeft">
+    <div :class="$style.back" @click="reduce">
+      Go back
+    </div>
+    <Flex :class="$style.listitem" direction="column" wrap="wrap">
       <TechnoItem
         v-for="techno in technos"
         :key="techno.name"
+        :class="$style.technoitem"
         :image="techno.image"
         :name="techno.name"
         :description="techno.description"
       />
-    </Grid>
+    </Flex>
     <TechnoDescription
       :class="$style.description"
       :illustration="illustration"
@@ -24,15 +30,21 @@
 import TechnoItem from '@/components/TechnoItem.vue'
 import TechnoDescription from '@/components/TechnoDescription.vue'
 import Grid from '@/components/Grid.vue'
+import Flex from '@/components/Flex.vue'
 
 export default {
   name: 'SkillCollapsed',
   components: {
     Grid,
+    Flex,
     TechnoItem,
     TechnoDescription
   },
   props: {
+    id: {
+      type: Number,
+      required: true
+    },
     title: {
       type: String,
       required: true
@@ -48,9 +60,28 @@ export default {
     technos: {
       type: Array,
       required: true
+    },
+    idx: {
+      type: Number,
+      required: true
     }
   },
+  data() {
+    return {
+      active: false
+    }
+  },
+  created() {
+    this.isActive()
+  },
   methods: {
+    isActive() {
+      if (this.id === this.idx) {
+        setTimeout(() => {
+          this.active = !this.active
+        }, 500)
+      }
+    },
     reduce() {
       this.$emit('reduce')
     }
@@ -59,27 +90,29 @@ export default {
 </script>
 
 <style lang="scss" module>
-
-.wrapperLeft {
-  @media screen and (min-width: 200px) and (max-width: 992px) {
-    grid-template-columns: 1fr;
+.listitem {
+  &:after {
+    @include overlayHorizontal;
   }
-  @media screen and (min-width: 992px) and (max-width: 1200px) {
-    grid-template-columns: repeat(auto-fill, 200px);
-    grid-template-rows: 200px 200px;
-  }
-  @media screen and (min-width: 1200px) and (max-width: 1400px) {
-    grid-template-columns: repeat(auto-fill, 300px);
-    grid-template-rows: 200px 200px;
-  }
-  @media screen and (min-width: 1400px) and (max-width: 1600px){
-    grid-template-columns: repeat(auto-fill, 400px);
-    grid-template-rows: 100px 100px;
-  }
-  @media screen and (min-width: 1600px) {
-    grid-template-columns: repeat(auto-fill, 500px);
-    grid-template-rows: 100px 100px;
-  }
+  position: relative;
+  grid-row-start: 2;
+  align-self: center;
+  height: 70%;
 }
 
+.technoitem {
+  margin-bottom: spacer(6);
+}
+
+.description {
+  grid-row-start: 2;
+}
+
+.active {
+  .listitem {
+    &:after {
+      @include overlayHorizontalHide();
+    }
+  }
+}
 </style>

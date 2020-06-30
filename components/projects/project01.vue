@@ -37,7 +37,7 @@
       <img
         class="image"
         :src="require(`@/assets/images/projects/${project.image.toLowerCase()}.png`)"
-        width="80%"
+        width="60%"
         height="100%"
         alt="project image"
       >

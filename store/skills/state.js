@@ -3,7 +3,7 @@ export default () => ({
     {
       id: 0,
       image: 'skills/number_01',
-      illustration: 'FrontendIllu',
+      illustration: 'illu_frontend',
       title: 'Frontend',
       description:
         'Pour le CSS, j\'utilise principalement l\'outil SASS et des frameworks tels que Bootstrap et TailwindCSS.',
@@ -39,7 +39,7 @@ export default () => ({
     {
       id: 1,
       image: 'skills/number_02',
-      illustration: 'BackendIllu',
+      illustration: 'illu_backend',
       title: 'Backend',
       description:
         'En parrallèle de mon cursus orienté front, j\'ai pu me former et travailler sur des technologies backend.',
@@ -70,26 +70,26 @@ export default () => ({
     {
       id: 2,
       image: 'skills/number_03',
-      illustration: 'DesignIllu',
+      illustration: 'illu_design',
       title: 'Visual Design',
       description:
-        'Pour mes projets, j\'aime réaliser un travail de conception et de design en amont.',
+        'En parrallèle de mon cursus orienté front, j\'ai pu me former et travailler sur des technologies backend.',
       bordered: false,
       technos: [
         {
-          name: 'Adobe XD',
-          description: 'Design at the speed of thought',
-          image: 'adobexd'
+          name: 'Node.js',
+          description: 'Javascript on server-side',
+          image: 'nodejs'
         },
         {
-          name: 'Figma',
-          description: 'The collaborative interface design tool',
-          image: 'figma'
+          name: 'Express.js',
+          description: 'Framework Node.js',
+          image: 'express'
         },
         {
-          name: 'Photoshop',
-          description: 'The creative world runs on Photoshop',
-          image: 'photoshop'
+          name: 'MySQL',
+          description: 'Relationnal database',
+          image: 'mysql'
         }
       ]
     }

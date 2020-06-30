@@ -1,6 +1,6 @@
 <template>
   <Grid
-    :class="[$style.wrapper, {[$style.isActive]: active}]"
+    :class="[$style.wrapper, { [$style.isActive]: active }]"
     :template-rows="$isMobile ? '1fr' : '1fr 1fr 1fr'"
   >
     <Hero :class="$style.hero">
@@ -16,23 +16,16 @@
       <SkillItem
         v-for="(skill, index) in skills"
         :key="skill.id"
-        :index="skill.id"
-        :class="[$style.item, {[$style.large]: index != 0}]"
-        :image="skill.image"
-        :title="skill.title"
-        :description="skill.description"
-        :bordered="skill.bordered"
-        :technos="skill.technos"
+        v-bind="skill"
+        :class="[$style.item, { [$style.large]: index != 0 }]"
         :active="active"
         @collapsed="collapsed"
       />
     </Flex>
     <SkillCollapsed
       v-if="isCollapsed"
-      :title="collapsedSkills.title"
-      :description="collapsedSkills.description"
-      :illustration="collapsedSkills.illustration"
-      :technos="collapsedSkills.technos"
+      v-bind="collapsedSkill"
+      :idx="idxCollapsed"
       @reduce="toggle"
     />
   </Grid>
@@ -66,20 +59,13 @@ export default {
   data() {
     return {
       isCollapsed: false,
-      idxCollapsed: null,
-      technos: null
+      idxCollapsed: null
     }
   },
   computed: {
     ...mapGetters('skills', ['skills']),
-    collapsedSkills() {
-      const { title, description, illustration, technos } = this.getCollapsedSkills(this.idxCollapsed)
-      return {
-        title,
-        description,
-        illustration,
-        technos
-      }
+    collapsedSkill() {
+      return this.$store.getters['skills/collapsedSkill'](this.idxCollapsed)
     }
   },
   mounted() {
@@ -92,21 +78,12 @@ export default {
     },
     toggle() {
       this.isCollapsed = !this.isCollapsed
-    },
-    getCollapsedSkills(idx) {
-      return {
-        title: this.skills[idx].title,
-        description: this.skills[idx].description,
-        illustration: this.skills[idx].illustration,
-        technos: this.skills[idx].technos
-      }
     }
   }
 }
 </script>
 
 <style lang="scss" module>
-
 .wrapper {
   height: 100vh;
 }
@@ -115,7 +92,13 @@ export default {
   position: relative;
   margin-top: spacer(8);
   &:after {
-    @include overlayHorizontal((position: absolute, value: 0, delay: 2s))
+    @include overlayHorizontal(
+      (
+        position: absolute,
+        value: 0,
+        delay: 2s
+      )
+    );
   }
 }
 
@@ -133,38 +116,37 @@ export default {
   &.large {
     padding-left: spacer(4);
   }
-   &:after {
-    @include overlayVertical()
+  &:after {
+    @include overlayVertical();
   }
 }
 
- .skills {
-   height: 100%;
+.skills {
+  height: 100%;
 }
 
 .isActive {
   .hero {
     &:after {
-      @include overlayHorizontalHide()
+      @include overlayHorizontalHide();
     }
   }
 
-.title {
-  &:before {
-    position: absolute;
-    right: 0;
-    content: '';
-    width: 10px;
-    height: 10px;
-    background: $greenmain;
+  .title {
+    &:before {
+      position: absolute;
+      right: 0;
+      content: '';
+      width: 10px;
+      height: 10px;
+      background: $greenmain;
+    }
   }
-}
 
-.item {
-  &:after {
-    @include overlayVerticalHide()
+  .item {
+    &:after {
+      @include overlayVerticalHide();
     }
   }
 }
-
 </style>

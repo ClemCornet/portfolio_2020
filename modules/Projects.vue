@@ -1,7 +1,7 @@
 <template>
   <Grid
     :class="[$style.wrapper, {[$style.isActive]: active}]"
-    :template-rows="$isMobile ? '1fr' : '2fr 1fr 2fr'"
+    :template-rows="$isMobile ? '1fr' : '2fr 1fr 6fr'"
   >
     <Hero :class="$style.hero">
       <h1 :class="$style.title">
