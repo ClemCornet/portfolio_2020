@@ -37,7 +37,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import { activeMixin } from './activeMixin.js'
+// import { activeMixin } from './activeMixin.js'
 import Hero from '@/components/Hero.vue'
 import SkillItem from '@/components/SkillItem.vue'
 import Grid from '@/components/Grid.vue'
@@ -53,10 +53,14 @@ export default {
     SkillItem,
     SkillCollapsed
   },
-  mixins: [activeMixin],
+  // mixins: [activeMixin],
   props: {
     current: {
       type: String,
+      required: true
+    },
+    active: {
+      type: Boolean,
       required: true
     }
   },
@@ -66,9 +70,9 @@ export default {
       return this.$store.getters['skills/collapsedSkill'](this.idxCollapsed)
     }
   },
-  mounted() {
-    this.isActive()
-  },
+  // mounted() {
+  //   this.isActive()
+  // },
   methods: {
     ...mapActions('skills', ['collapseSkill', 'loadTechnos']),
     open(idx) {

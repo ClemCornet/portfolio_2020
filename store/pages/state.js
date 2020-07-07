@@ -4,7 +4,7 @@ export default () => ({
   pages: [
     {
       id: 1,
-      active: false,
+      active: true,
       name: 'MySelf',
       component: 'Home',
       title: 'Developer',

@@ -11,6 +11,7 @@
     <component
       :is="currentPage"
       :current="currentPage"
+      :active="isFading"
     />
     <ScrollIcon
       v-if="currentPage === 'Home'"
@@ -43,11 +44,15 @@ export default {
   },
   data() {
     return {
-      isLoaded: false
+      isLoaded: false,
+      isFading: false
     }
   },
   computed: {
     ...mapGetters('pages', ['pages', 'currentIndex']),
+    // isFading() {
+    //   return this.$store.getters['pages/isFading'](this.currentIndex)
+    // },
     getPageComp() {
       let components = []
       this.pages.map(({ component }) => {
@@ -70,9 +75,18 @@ export default {
     this.$nextTick(() => {
       window.addEventListener('wheel', this.wheel)
     })
+    setTimeout(() => {
+      this.isFading = true
+    }, 250)
   },
   methods: {
     ...mapActions('pages', ['navigatePage']),
+    fadePage() {
+      this.isFading = false
+      setTimeout(() => {
+        this.isFading = true
+      }, 1500)
+    },
     updatePage(index) {
       if (index >= 0 && index < this.getPageComp.length) {
         this.isLoaded = true
@@ -82,14 +96,23 @@ export default {
     wheel({ deltaY }) {
       if (!this.isLoaded) {
         if (deltaY > 0) {
-          this.updatePage(this.currentIndex + 1)
+          this.fadePage()
+          setTimeout(() => {
+            this.updatePage(this.currentIndex + 1)
+          }, 600)
         } else if (deltaY < 0) {
-          this.updatePage(this.currentIndex - 1)
+          this.fadePage()
+          setTimeout(() => {
+            this.updatePage(this.currentIndex - 1)
+          }, 600)
         }
       }
     },
     changePage(index) {
-      this.navigatePage(index)
+      this.fadePage(index)
+      setTimeout(() => {
+        this.navigatePage(index)
+      }, 600)
     }
   }
 }

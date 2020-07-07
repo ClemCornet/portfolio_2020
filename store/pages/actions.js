@@ -4,12 +4,11 @@ export default {
       commit('UPDATE_INDEX', index)
     }, duration)
   },
-  loadPage({ commit, state: { duration } }, index) {
+  fadePage({ commit, state: { duration } }, index) {
+    console.log(index)
+    commit('FADE_PAGE', index - 1)
     setTimeout(() => {
-      commit('LOAD_PAGE', index)
+      commit('FADE_PAGE', index)
     }, duration)
-  },
-  leavePage({ commit }, index) {
-    commit('LEAVE_PAGE', index)
   }
 }

@@ -25,6 +25,10 @@ export default {
     current: {
       type: String,
       required: true
+    },
+    active: {
+      type: Boolean,
+      required: true
     }
   },
   computed: {
