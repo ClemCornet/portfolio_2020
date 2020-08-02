@@ -1,25 +1,18 @@
 <template>
-  <Flex :class="$style.item">
-    <img :class="$style.image" :src="require(`@/assets/images/technos/${image}.jpg`)" alt="logo_technologie_web">
-    <div direction="column" justify="center" :class="$style.wrapperRight">
-      <h3 :class="$style.title">
-        {{ name }}
-      </h3>
-      <p :class="$style.description">
-        {{ description }}
-      </p>
-    </div>
-  </Flex>
+  <div
+    :class="$style.item"
+    :style="`transform: rotate(${degrees}deg) translate(${trans}em ) rotate(-${degrees}deg`"
+  >
+    <img :class="$style.image" :src="require(`@/assets/images/technos/${image}.jpg`)" alt="logo_technologies">
+    <p :class="$style.description">
+      {{ name }}
+    </p>
+  </div>
 </template>
 
 <script>
-import Flex from '@/components/Flex.vue'
-
 export default {
   name: 'TechnoItem',
-  components: {
-    Flex
-  },
   props: {
     image: {
       type: String,
@@ -29,9 +22,18 @@ export default {
       type: String,
       required: true
     },
+    degrees: {
+      type: Number,
+      required: true
+    },
     description: {
       type: String,
       required: true
+    }
+  },
+  computed: {
+    trans() {
+      return this.$mq === 'xl' ? 14.5 : 13.5
     }
   }
 }
@@ -40,35 +42,37 @@ export default {
 <style lang="scss" module>
 
 .item {
-  margin: 0 spacer(3) spacer(2) 0;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8em; height: 8em;
+  margin: -3.5em;
+  text-align: center;
+  text-decoration: none;
+  box-sizing: border-box;
+  &:hover {
+    .image {
+      transform: scale(1.2);
+    }
+    .description {
+      opacity: 1;
+    }
+  }
 }
 
 .image {
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
-   @include bp('xl') {
-    width: 80px;
-    height: 80px;
-  }
+  transition: transform .2s;
 }
 
-.wrapperRight {
-  margin-left: spacer(4);
-  .title {
-    @include font(1.2rem, $greenmain, $fontSemiBoldWeight);
-    margin-bottom: spacer(1);
-    @include bp('xl') {
-      @include font($fontMediumSize, $greenmain, $fontSemiBoldWeight);
-    }
-  }
-
 .description {
-  @include font(1rem, $purewhite, $fontRegularWeight);
-  @include bp('xl') {
-    @include font($fontSmallSize, $purewhite, $fontRegularWeight);
-    }
-  }
+  z-index: 10;
+  @include font(1.2rem, $purewhite, $fontSemiBoldWeight);
+  opacity: 0;
+  transition: opacity .3s;
 }
 
 </style>

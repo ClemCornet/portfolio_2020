@@ -1,45 +1,53 @@
 <template>
   <Grid
-    :template-columns="$isMobile ? '1fr' : '2fr 1fr'"
+    :template-columns="$isMobile ? '1fr' : '1fr 5fr 1fr'"
     template-row="5fr 1fr"
+    justify-items="center"
+    align-content="center"
     :class="[$style.wrapper, { [$style.active]: isFading }]"
   >
     <div :class="$style.header">
-      <Flex>
-        <ImageNumber
-          :source="image"
-          :rounded="true"
-          :width="90"
-          :heigth="90"
-          :class="$style.number"
-        />
-        <h1 :class="$style.title">
-          {{ title }}
-        </h1>
-      </Flex>
       <Flex
-        justify="flex-end"
+        justify="center"
+        direction="column"
       >
-        <div :class="$style.button" @click="reduce">
-          back
-        </div>
-      </Flex>
+        <Flex>
+          <ImageNumber
+            :source="image"
+            :rounded="true"
+            :width="100"
+            :heigth="100"
+            :class="$style.number"
+          />
+          <h1 :class="$style.title">
+            {{ title }}
+          </h1>
+        </Flex>
+        <Flex align="center" :class="$style.separator">
+          <span :class="$style.square" />
+          <Flex />
+        </flex>
+      </flex>
     </div>
-    <Flex :class="$style.listitem" direction="column" wrap="wrap">
-      <TechnoItem
-        v-for="techno in technos"
-        :key="techno.name"
-        :class="$style.technoitem"
-        :image="techno.image"
-        :name="techno.name"
-        :description="techno.description"
-      />
-    </Flex>
+    <div :class="[$style.button, { [$style.active]: isFading }]" @click="reduce">
+      <ArrowLeft />
+    </div>
+    <div :class="$style.listitem">
+      <div :class="$style.circleMenu">
+        <TechnoItem
+          v-for="techno in technos"
+          :key="techno.name"
+          :class="$style.technoitem"
+          v-bind="techno"
+        />
+      </div>
+    </div>
   </Grid>
 </template>
 
 <script>
 import { mapActions } from 'vuex'
+import ArrowLeft from '../assets/svg/ArrowLeft.vue'
 import ImageNumber from '@/components/Image.vue'
 import TechnoItem from '@/components/TechnoItem.vue'
 import Grid from '@/components/Grid.vue'
@@ -51,7 +59,8 @@ export default {
     ImageNumber,
     Grid,
     Flex,
-    TechnoItem
+    TechnoItem,
+    ArrowLeft
   },
   props: {
     id: {
@@ -101,7 +110,11 @@ export default {
 }
 
 .header {
-  margin-top: spacer(6);
+  position: relative;
+  &:after {
+    @include overlayHorizontal((position: absolute, value: 0, delay: 0.5s));;
+  }
+  grid-column-start: 2;
 }
 
 .number {
@@ -111,75 +124,88 @@ export default {
 .title {
   position: relative;
   margin: spacer(1) 0 0 spacer(2);
-  @include font(3.5rem, $purewhite, $fontMediumWeight);
+  @include font(3rem, $purewhite, $fontMediumWeight);
   @include bp('sm') {
-    @include font(3.5rem, $purewhite, $fontMediumWeight);
+    @include font(4rem, $purewhite, $fontMediumWeight);
+  }
+}
+
+.separator {
+  &:before, &:after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid $greenmain;
+  }
+  &:before {
+    margin-right: .25em;
+  }
+  &:after {
+    margin-left: .25em;
+  }
+}
+
+.square {
+  &:after {
+    content: '';
+    display: block;
+    margin: 0 spacer(2) 0 spacer(2);
+    width: 6px;
+    height: 6px;
+    background: $greenmain;
+    transform: rotate(45deg);
   }
 }
 
 .button {
-  margin: 0 spacer(3);
-  padding: spacer(0.8) spacer(2);
+  &:after {
+    @include overlayHorizontal((position: absolute, value: 0, delay: 0.5s));
+  }
   position: relative;
-  &:before {
-    content: "";
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: calc(50% - .4rem);
-    border: 1px solid $greenmain;
-    border-bottom: 0;
-    left: 0;
-    top: 0;
-    transition: border .2s ease-in;
-  }
-   &:after {
-    content: "";
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: calc(50% - 0.4rem);
-    border: 1px solid $greenmain;
-    border-top: 0;
-    left: 0;
-    bottom: 0;
-    transition: border .2s ease-in;
-  }
-  &:hover {
-    &:before {
-      border: 1px solid white;
-      border-bottom: 0;
-    }
-    &:after {
-      border: 1px solid white;
-      border-top: 0;
-    }
-    .icon {
-      &:after {
-      background-color: $greenmain;
-      }
-    }
-  }
+  height: 40px;
+  grid-row-start: 2;
+  grid-column-start: 1;
+  justify-self: end;
 }
 
 .listitem {
   &:after {
-    @include overlayHorizontal;
+    @include overlayHorizontal((position: absolute, value: 0, delay: 2s));
   }
-  margin-top: spacer(6);
   position: relative;
   grid-row-start: 2;
-  height: 70%;
+  grid-column-start: 2;
+  justify-self: stretch;
+  height: 100%;
+  margin-top: spacer(2);
 }
 
-.technoitem {
-  margin-bottom: spacer(6);
+.circleMenu {
+  position: relative;
+  width: 28em;
+  height: 28em;
+  @media (min-width: 1450px) {
+    width: 30em;
+    height: 30em;
+  }
+  border: solid 2px $greenmain;
+  border-radius: 50%;
+  margin: 5em auto 7em;
 }
 
 .active {
+  .header {
+    &:after {
+      @include overlayHorizontalHide;
+    }
+  }
   .listitem {
     &:after {
-      @include overlayHorizontalHide();
+      @include overlayHorizontalHide;
+    }
+  }
+  &.button {
+    &:after {
+      @include overlayHorizontalHide;
     }
   }
 }

@@ -15,7 +15,6 @@
 
 <script>
 import { mapGetters } from 'vuex'
-// import { activeMixin } from './activeMixin.js'
 import Grid from '@/components/Grid.vue'
 import Hero from '@/components/Hero.vue'
 import Tabs from '@/components/TabsProjects.vue'
@@ -37,7 +36,6 @@ export default {
     Project04,
     Project05
   },
-  // mixins: [activeMixin],
   props: {
     current: {
       type: String,
@@ -59,9 +57,6 @@ export default {
       return this.projects[this.currentIndex].component
     }
   },
-  // mounted() {
-  //   this.isActive()
-  // },
   methods: {
     getCurrent(idx) {
       this.currentIndex = idx

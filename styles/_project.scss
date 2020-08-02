@@ -1,9 +1,19 @@
-.isInactive {
-  &.containerProject {
+.leftSide {
     &:after {
-    @include overlayHorizontal((position: absolute, value: 0, delay: 1.5s))
+    @include overlayHorizontal((position: absolute, value: 0, delay: 2s))
+  }
+}
+
+.isActive {
+  .leftSide {
+    &:after {
+    @include overlayHorizontalHide()
     }
   }
+}
+
+.leftSide {
+  position: relative;
 }
 
 .containerProject {
@@ -54,12 +64,4 @@ margin: spacer(2) 0 spacer(1) 0;
 
 .image {
   margin-left: spacer(12);
-}
-
-.isActive {
-  &.containerProject {
-    &:after {
-    @include overlayHorizontalHide()
-    }
-  }
 }

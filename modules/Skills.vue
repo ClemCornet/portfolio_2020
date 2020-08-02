@@ -74,7 +74,9 @@ export default {
     }
   },
   destroyed() {
-    this.collapseSkill(this.idxCollapsed)
+    if (this.isCollapsed) {
+      this.collapseSkill(0)
+    }
   },
   methods: {
     ...mapActions('skills', ['collapseSkill', 'loadTechnos']),
@@ -90,7 +92,7 @@ export default {
       this.fadeTechnos()
       setTimeout(() => {
         this.collapseSkill(idx)
-      }, 1000)
+      }, 1500)
     },
     fadeTechnos() {
       this.isFading = !this.isFading

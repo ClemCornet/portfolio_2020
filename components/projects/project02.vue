@@ -1,7 +1,7 @@
 <template>
   <Grid
     :template-columns="$isMobile ? '1fr' : '1fr 1fr'"
-    :class="['containerProject', {['isActive']: isActive}]"
+    :class="['containerProject', isActive ? 'isActive' : 'isInactive']"
   >
     <div class="leftSide">
       <div>

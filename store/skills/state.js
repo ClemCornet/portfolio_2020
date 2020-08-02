@@ -14,29 +14,29 @@ export default () => ({
       bordered: true,
       technos: [
         {
-          name: 'Vue.js',
-          description: 'The progressive framework',
-          image: 'vuejs'
+          name: 'Nuxt.js',
+          image: 'nuxtjs',
+          degrees: 0
         },
         {
           name: 'React.js',
-          description: 'The javascript framework by Facebook',
-          image: 'reactjs'
-        },
-        {
-          name: 'Nuxt.js',
-          description: 'The progressive vue.js framework',
-          image: 'nuxtjs'
-        },
-        {
-          name: 'Tailwind',
-          description: 'A utility-first CSS framework',
-          image: 'tailwind'
+          image: 'reactjs',
+          degrees: 72
         },
         {
           name: 'SASS',
-          description: 'Syntactically Awesome Style Sheet',
-          image: 'sass'
+          image: 'sass',
+          degrees: 144
+        },
+        {
+          name: 'Tailwind',
+          image: 'tailwind',
+          degrees: 216
+        },
+        {
+          name: 'Vue.js',
+          image: 'vuejs',
+          degrees: 288
         }
       ]
     },
@@ -50,24 +50,24 @@ export default () => ({
       bordered: true,
       technos: [
         {
-          name: 'Node.js',
-          description: 'Javascript on server-side',
-          image: 'nodejs'
+          name: 'MySQL',
+          image: 'mysql',
+          degrees: 90
         },
         {
           name: 'Express.js',
-          description: 'Framework Node.js',
-          image: 'express'
+          image: 'express',
+          degrees: 180
         },
         {
-          name: 'MySQL',
-          description: 'Relationnal database',
-          image: 'mysql'
+          name: 'Node.js',
+          image: 'nodejs',
+          degrees: 270
         },
         {
           name: 'MongoDB',
-          description: 'A document oriented database',
-          image: 'mongodb'
+          image: 'mongodb',
+          degrees: 360
         }
       ]
     },
@@ -81,29 +81,24 @@ export default () => ({
       bordered: false,
       technos: [
         {
-          name: 'Node.js',
-          description: 'Javascript on server-side',
-          image: 'nodejs'
+          name: 'Illustrator',
+          image: 'illustrator',
+          degrees: 90
         },
         {
-          name: 'Express.js',
-          description: 'Framework Node.js',
-          image: 'express'
+          name: 'Adobe XD',
+          image: 'adobexd',
+          degrees: 180
         },
         {
-          name: 'MySQL',
-          description: 'Relationnal database',
-          image: 'mysql'
+          name: 'Figma',
+          image: 'figma',
+          degrees: 270
         },
         {
-          name: 'MySQL',
-          description: 'Relationnal database',
-          image: 'mysql'
-        },
-        {
-          name: 'MySQL',
-          description: 'Relationnal database',
-          image: 'mysql'
+          name: 'Photoshop',
+          image: 'photoshop',
+          degrees: 360
         }
       ]
     }
