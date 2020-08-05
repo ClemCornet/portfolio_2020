@@ -28,7 +28,6 @@
 </template>
 
 <script>
-// import { activeMixin } from './activeMixin.js'
 import Grid from '@/components/Grid.vue'
 import TitleImage from '@/components/Image.vue'
 import SocialWrapper from '@/components/SocialWrapper.vue'
@@ -42,7 +41,6 @@ export default {
     SocialWrapper,
     MySelf
   },
-  // mixins: [activeMixin],
   props: {
     current: {
       type: String,
@@ -58,9 +56,6 @@ export default {
       return this.$store.getters['pages/content'](this.current)
     }
   }
-  // mounted() {
-  //   this.isActive()
-  // }
 }
 </script>
 

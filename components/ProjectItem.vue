@@ -8,17 +8,38 @@
         {{ type }}
       </p>
       <ul :class="$style.technos">
-        <li v-for="techno in technos" :key="techno" :class="$style.techno">
+        <li
+          v-for="techno in technos"
+          :key="techno"
+          :class="$style.techno"
+        >
           &nbsp;{{ techno }} |
         </li>
       </ul>
       <Flex :class="$style.links">
-        <GithubLogo :class="$style.link" />
-        <WebsiteLogo :class="$style.link" />
+        <a
+          v-if="github"
+          :href="github"
+          target="_blank"
+          :class="$style.link"
+        >
+          <GithubLogo />
+        </a>
+        <a
+          :href="website"
+          target="_blank"
+          :class="$style.link"
+        >
+          <WebsiteLogo />
+        </a>
       </Flex>
     </div>
     <div :class="$style.right">
-      <img :class="$style.image" :src="require(`@/assets/images/projects/${image}.png`)" alt="project">
+      <img
+        :class="$style.image"
+        :src="require(`@/assets/images/projects/${image}.png`)"
+        alt="project"
+      >
     </div>
   </Flex>
 </template>
@@ -48,7 +69,12 @@ export default {
       type: Array,
       required: true
     },
-    resume: {
+    github: {
+      type: String,
+      required: false,
+      default: ''
+    },
+    website: {
       type: String,
       required: true
     },
@@ -98,17 +124,16 @@ export default {
 
 .techno {
   @include font(1rem, $purewhite, $fontRegularWeight);
-  // border: 1px solid $purewhite;
-  // border-radius: 50px;
-  // margin-right: spacer(2);
-  // padding: 4px spacer(3);
-  // max-height: 30px;
 }
 
 .links {
   margin-top: spacer(4);
   .link {
     margin: 0 spacer(1);
+    transition: transform 0.2s ease-in;
+    &:hover {
+      transform: scale(1.2);
+    }
   }
 }
 

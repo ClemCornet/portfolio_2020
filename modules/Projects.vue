@@ -12,6 +12,7 @@
     <Grid
       template-rows="1fr 1fr"
       template-columns="1fr 1fr"
+      :class="$style.projectsWrapper"
     >
       <ProjectItem
         v-for="project in currentPage"
@@ -103,6 +104,13 @@ export default {
   }
 }
 
+.projectsWrapper {
+  position: relative;
+  &:after {
+    @include overlayHorizontal((position: absolute, value: 0, delay: 1.8s))
+  }
+}
+
 .rightItem {
   justify-self: flex-start;
 }
@@ -128,6 +136,11 @@ export default {
     }
   }
   .tabs {
+    &:after {
+      @include overlayHorizontalHide();
+    }
+  }
+  .projectsWrapper {
     &:after {
       @include overlayHorizontalHide();
     }

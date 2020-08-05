@@ -50,7 +50,29 @@ export default () => ({
       active: false,
       name: 'Contact',
       component: 'Contact',
-      title: 'Contact'
+      title: 'Contact',
+      cards: [
+        {
+          title: 'Location',
+          icon: 'Location',
+          description: 'Paris, France'
+        },
+        {
+          title: 'Linkedin',
+          icon: 'Linkedin',
+          description: 'https://linkedin.com/in/clem-cornet/'
+        },
+        {
+          title: 'Github',
+          icon: 'Github',
+          description: 'https://github.com/clemcornet/'
+        },
+        {
+          title: 'Twitter',
+          icon: 'Twitter',
+          description: 'https://twitter.com/ClemCornet/'
+        }
+      ]
     }
   ],
   social: [
