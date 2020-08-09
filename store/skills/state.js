@@ -10,35 +10,34 @@ export default () => ({
       illustration: 'illu_frontend',
       title: 'Frontend',
       description:
-        'Pour le CSS, j\'utilise principalement l\'outil SASS et des frameworks tels que Bootstrap et TailwindCSS.',
+        'For the frontend, I use modern javascript, Vue & React. For CSS, I use SASS and sometimes libraries like Tailwind or Bootstrap.',
       bordered: true,
       technos: [
         {
           name: 'Vue.js',
           image: 'vuejs',
-          description:
-            'Vue.js est le framework javascript que j\'utilise le plus. Je possède une solide experience sur la technologie et je continue d\'explorer toutes les possibilités qu\'offre la librairie.'
+          description: 'The Progressive JavaScript Framework'
         },
         {
           name: 'Nuxt.js',
           image: 'nuxtjs',
-          description:
-            'The vue.js progressive framework'
+          description: 'The Intuitive Vue Framework'
         },
         {
           name: 'React.js',
           image: 'reactjs',
-          description: 'lorem ipusm lorem ipsum sdfsdf'
+          description:
+            'A JavaScript library for building user interfaces by Facebook'
         },
         {
           name: 'SASS',
           image: 'sass',
-          description: 'lorem ipusm lorem ipsum sdfsdf'
+          description: 'CSS extension language'
         },
         {
           name: 'Tailwind',
           image: 'tailwind',
-          description: 'lorem ipusm lorem ipsum sdfsdf'
+          description: 'A utility-first CSS framework'
         }
       ]
     },
@@ -48,28 +47,29 @@ export default () => ({
       illustration: 'illu_backend',
       title: 'Backend',
       description:
-        'En parrallèle de mon cursus orienté front, j\'ai pu me former et travailler sur des technologies backend.',
+        'For the backend, I\'m used to working with Node.js / MongoDB stack. I also worked with SQL database.',
       bordered: true,
       technos: [
         {
           name: 'Node.js',
           image: 'nodejs',
-          description: 'lorem ipusm lorem ipsum sdfsdf'
+          description: 'Javascript on server side'
         },
         {
           name: 'Express.js',
           image: 'express',
-          description: 'lorem ipusm lorem ipsum sdfsdf'
+          description:
+            'Fast, unopinionated, minimalist web framework for Node.js'
         },
         {
           name: 'MongoDB',
           image: 'mongodb',
-          description: 'lorem ipusm lorem ipsum sdfsdf'
+          description: 'The database for modern applications'
         },
         {
           name: 'MySQL',
           image: 'mysql',
-          description: 'lorem ipusm lorem ipsum sdfsdf'
+          description: 'An open-source relational database management system'
         }
       ]
     },
@@ -79,7 +79,7 @@ export default () => ({
       illustration: 'illu_design',
       title: 'Visual Design',
       description:
-        'En parrallèle de mon cursus orienté front, j\'ai pu me former et travailler sur des technologies backend.',
+        'I\'m also interested in web and interface design through tools like figma or the Adobe suite',
       bordered: false,
       technos: [
         {

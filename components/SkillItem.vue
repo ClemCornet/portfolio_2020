@@ -1,6 +1,7 @@
 <template>
   <Flex
     direction="column"
+    justify="space-around"
     flex="1"
     :class="[$style.item, {[$style.bordered]: bordered}, {[$style.isActive]: active}]"
   >
@@ -18,7 +19,10 @@
       {{ description }}
     </p>
     <div :class="$style.button" @click="collapsed">
-      +
+      <p>Show more</p>
+      <div :class="$style.icon">
+        <ArrowRight :class="$style.arrow" />
+      </div>
     </div>
   </Flex>
 </template>
@@ -26,12 +30,14 @@
 <script>
 import ImageNumber from '@/components/Image.vue'
 import Flex from '@/components/Flex.vue'
+import ArrowRight from '@/assets/svg/ArrowRight.vue'
 
 export default {
   name: 'SkillItem',
   components: {
     Flex,
-    ImageNumber
+    ImageNumber,
+    ArrowRight
   },
   props: {
     id: {
@@ -100,9 +106,15 @@ export default {
 
 .button {
   align-self: flex-end;
+  display: flex;
   font-size: $fontMediumSize;
   color: $purewhite;
   cursor: pointer;
+  @include paragraph();
+  .arrow {
+    width: 30px;
+    height: auto;
+  }
 }
 
 </style>

@@ -3,13 +3,13 @@
     <div :class="$style.wrapper">
       <div
         :class="$style.fillbar"
-        :style="{ transform: `scaleY(${(currentIndex ) / dots.length})` }"
+        :style="{ transform: `scaleY(${(currentIndex ) / (dots.length - 1)})` }"
       />
       <div
         v-for="(dot, index) in dots"
         :key="dot"
         :class="[$style.dot, {[$style.active]: isActive(index)}]"
-        :style="{ top: `${(dot) / (dots.length) * 100}%` }"
+        :style="{ top: `${(dot) / (dots.length - 1) * 100}%` }"
         @click="changePage(index)"
       >
         <div :class="[$style.dotCircle, {[$style.active]: isActive(index)}]" />
@@ -48,7 +48,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 90%;
+  height: 80%;
   transform: translateY(64px);
 }
 

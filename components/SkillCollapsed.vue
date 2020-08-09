@@ -192,7 +192,6 @@ export default {
   grid-column-start: 2;
   justify-self: center;
   height: 100%;
-  margin-top: spacer(2);
 }
 
 .active {
