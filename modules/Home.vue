@@ -1,7 +1,7 @@
 <template>
   <Grid
     :template-columns="$isMobile ? '1fr' : '3fr 1fr'"
-    template-rows="1fr 1fr"
+    :template-rows="$isMobile ? '0.5fr' : '1fr 1fr'"
     :class="{[$style.isActive]: active}"
   >
     <div :class="$style.containerTitles">
@@ -9,8 +9,8 @@
         source="title_frontend"
         alt="title frontend"
         :class="$style.image"
-        :width="620"
-        :height="99"
+        width="auto"
+        height="auto"
       />
       <h1 :class="$style.title">
         {{ content.title | capitalize }}
@@ -20,6 +20,7 @@
       </p>
     </div>
     <SocialWrapper
+      v-if="!$isMobile"
       :class="$style.social"
       :active="active"
     />
@@ -63,6 +64,10 @@ export default {
 
 .image {
   position: relative;
+  margin: 0 spacer(2);
+  @include bp('sm') {
+    margin: 0;
+  }
   &:after {
     @include overlayHorizontal((position: absolute, value: 0, delay: 1s));
   }
@@ -78,7 +83,9 @@ export default {
   margin-left: spacer(0.5);
   position: relative;
   @include font($fontMediumSize, $purewhite, $fontSemiBoldWeight);
+  text-align: center;
   @include bp('sm') {
+    text-align: left;
     @include font($fontBigSize, $purewhite, $fontSemiBoldWeight);
   }
     &:after {
@@ -89,7 +96,12 @@ export default {
 .subtitle {
   margin-left: spacer(1);
   position: relative;
-  @include font($fontMediumSize, $purewhite, $fontRegularWeight);
+  text-align: center;
+  @include font($fontSmallSize, $purewhite, $fontRegularWeight);
+  @include bp('sm') {
+    text-align: left;
+    @include font($fontMediumSize, $purewhite, $fontRegularWeight);
+  }
    &:after {
     @include overlayHorizontal((position: absolute, value: 0, delay: 2s));
   }
@@ -98,12 +110,12 @@ export default {
 .myself {
   grid-row-start: 2;
   grid-column-start: 1;
-  align-self: center;
   margin-left: spacer(2);
   position: relative;
-    &:after {
+  align-self: center;
+  &:after {
      @include overlayHorizontal((position: absolute, value: 0, delay: 2s));
-   }
+  }
 }
 
 .social {

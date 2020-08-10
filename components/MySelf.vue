@@ -1,5 +1,5 @@
 <template>
-  <Flex>
+  <Flex :direction="$isMobile ? 'column' : 'row'">
     <Avatar
       source="avatar"
       :rounded="true"
@@ -7,7 +7,7 @@
       :heigth="140"
       :class="$style.avatar"
     />
-    <p :class="[$style.description, $style.bordered]">
+    <p :class="[$style.description, {[$style.bordered]: !$isMobile}]">
       {{ description }}
     </p>
   </Flex>
@@ -34,13 +34,27 @@ export default {
 
 <style lang="scss" module>
 
+.avatar {
+  margin: auto;
+  margin-bottom: spacer(4);
+  @include bp('sm') {
+    margin: 0;
+  }
+}
+
 .description {
   @include paragraph();
   align-self: center;
-  margin-left: spacer(4);
-  padding-left: spacer(2);
-  text-justify: right;
-  width: 50%;
+  text-align: center;
+  width: 100%;
+  padding: 0 spacer(2);
+  @include bp('sm') {
+    width: 50%;
+    text-justify: right;
+    text-align: left;
+    margin-left: spacer(4);
+    padding: 0 0 0 spacer(2);
+  }
   &.bordered {
     border-left: 2px solid $greenmain;
   }

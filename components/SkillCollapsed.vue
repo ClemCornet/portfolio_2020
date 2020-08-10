@@ -1,7 +1,7 @@
 <template>
   <Grid
     :template-columns="$isMobile ? '1fr' : '1fr 5fr 1fr'"
-    template-row="5fr 1fr"
+    template-rows="5fr 1fr"
     justify-items="center"
     :class="[$style.wrapper, { [$style.active]: isFading }]"
   >

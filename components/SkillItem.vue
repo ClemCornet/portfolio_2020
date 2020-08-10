@@ -3,14 +3,14 @@
     direction="column"
     justify="space-around"
     flex="1"
-    :class="[$style.item, {[$style.bordered]: bordered}, {[$style.isActive]: active}]"
+    :class="[$style.item, {[$style.bordered]: bordered && !$isMobile}, {[$style.isActive]: active}]"
   >
     <ImageNumber
       :source="image"
       alt="number"
       :class="[$style.image, {[$style.isActive]: active}]"
-      :width="150"
-      :height="150"
+      :width="$isMobile ? 90 : 150"
+      height="auto"
     />
     <h2 :class="$style.title">
       {{ title | capitalize }}
@@ -19,7 +19,9 @@
       {{ description }}
     </p>
     <div :class="$style.button" @click="collapsed">
-      <p>Show more</p>
+      <p v-if="!$isMobile">
+        Show more
+      </p>
       <div :class="$style.icon">
         <ArrowRight :class="$style.arrow" />
       </div>
@@ -79,13 +81,6 @@ export default {
 
 <style lang="scss" module>
 
-.title {
-  @include font($fontMediumSize, $purewhite, $fontSemiBoldWeight);
-  @include bp('sm') {
-    @include font($fontLargeSize, $purewhite, $fontBoldWeight);
-  }
-}
-
 .item {
   &.bordered {
     &:before {
@@ -99,9 +94,31 @@ export default {
   }
 }
 
+.image {
+  margin: auto;
+  @include bp('sm') {
+    margin: 0;
+  }
+}
+
+.title {
+  text-align: center;
+  @include font(1.2rem, $purewhite, $fontSemiBoldWeight);
+  @include bp('sm') {
+    text-align: left;
+    @include font($fontLargeSize, $purewhite, $fontBoldWeight);
+  }
+}
+
 .description {
-  @include paragraph();
-  margin-top: spacer(4);
+  @include font(0.9rem, $purewhite, $fontRegularWeight);
+  text-align: center;
+  margin-top: spacer(2);
+  @include bp('sm') {
+    margin-top: spacer(4);
+    @include paragraph();
+    text-align: left;
+  }
 }
 
 .button {

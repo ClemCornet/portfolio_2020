@@ -108,7 +108,10 @@ export default {
 
 .hero {
   position: relative;
-  margin-top: spacer(8);
+  margin: spacer(1) 0 0 spacer(1);
+  @include bp('sm') {
+    margin: spacer(8) 0 0 0;
+  }
   &:after {
     @include overlayHorizontal(
       (
@@ -122,7 +125,7 @@ export default {
 
 .title {
   position: relative;
-  @include font($fontMediumSize, $purewhite, $fontSemiBoldWeight);
+  @include font(1.6rem, $purewhite, $fontSemiBoldWeight);
   @include bp('sm') {
     @include font($fontBigSize, $purewhite, $fontSemiBoldWeight);
   }
@@ -150,20 +153,20 @@ export default {
     }
   }
 
-  .title {
-    &:before {
-      position: absolute;
-      right: 0;
-      content: '';
-      width: 10px;
-      height: 10px;
-      background: $greenmain;
-    }
+.title {
+  &:before {
+    position: absolute;
+    right: 0;
+    content: '';
+    width: 10px;
+    height: 10px;
+    background: $greenmain;
   }
+}
 
-  .item {
-    &:after {
-      @include overlayVerticalHide();
+.item {
+  &:after {
+    @include overlayVerticalHide();
     }
   }
 }

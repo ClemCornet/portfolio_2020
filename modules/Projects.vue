@@ -78,7 +78,6 @@ export default {
 
 .hero {
   position: relative;
-  margin-top: spacer(8);
   &:after {
     @include overlayHorizontal((position: absolute, value: 0, delay: 2s));
   }
