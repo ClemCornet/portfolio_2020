@@ -1,7 +1,7 @@
 <template>
   <Grid
     :class="[$style.wrapper, { [$style.isActive]: active }]"
-    :template-rows="$isMobile ? '1fr' : '1fr 1fr 1fr'"
+    :template-rows="$isMobile ? '0.3fr' : '1fr 1fr 1fr'"
   >
     <Hero
       v-if="!isCollapsed"

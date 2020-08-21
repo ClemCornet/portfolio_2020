@@ -59,9 +59,8 @@ export default () => ({
       context: 'client project',
       year: '2020',
       technos: ['Nuxt', 'Node.js', 'Headless CMS'],
-      github: '#',
-      website: '#',
-      image: 'osteopathe'
+      github: 'https://github.com/ClemCornet',
+      image: 'blogstrapi'
     }
   ]
 })
