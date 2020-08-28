@@ -10,7 +10,7 @@ export default () => ({
       title: 'Developer',
       subtitle: 'based in Paris',
       description:
-        'My name is Clement. I\'m a Frontend Developer and I like to create modern web applications (SPA). I\'m passionate about the javascript ecosystem and particulary Vue.js framework. Feel free to get in touch if you are interested !'
+        'My name is Clement. I\'m a Frontend Developer and I like to create modern web applications (SPA). I\'m passionate about the javascript ecosystem, Vue.js framework and JAMSTACK with Nuxt. Feel free to get in touch if you are interested !'
     },
     {
       id: 2,
@@ -55,6 +55,11 @@ export default () => ({
       ]
     }
   ],
+  meta: {
+    description:
+      'My name is Clément CORNET. I am a Frontend Developer based in Paris. I am passionate about the javascript ecosystem, Vue.js framework and JAMSTACK.',
+    title: 'Clément CORNET | Frontend developer'
+  },
   social: [
     {
       id: 1,

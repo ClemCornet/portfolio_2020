@@ -8,6 +8,9 @@ export default {
   content: state => (currentPage) => {
     return state.pages.find(page => page.component === currentPage)
   },
+  meta(state) {
+    return state.meta
+  },
   social(state) {
     return state.social
   }

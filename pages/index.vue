@@ -50,7 +50,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('pages', ['pages', 'currentIndex']),
+    ...mapGetters('pages', ['meta', 'pages', 'currentIndex']),
     getPageComp() {
       let components = []
       this.pages.map(({ component }) => {
@@ -123,6 +123,17 @@ export default {
       setTimeout(() => {
         this.navigatePage(index)
       }, 600)
+    }
+  },
+  head() {
+    return {
+      title: this.meta.title,
+      meta: [
+        {
+          name: 'description',
+          content: this.meta.description
+        }
+      ]
     }
   }
 }
